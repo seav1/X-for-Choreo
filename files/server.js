@@ -117,10 +117,6 @@ async function runRoot() {
     });
   });
   
-  app.get('/newendpoint', (req, res) => {
-   res.send('Hello from the new endpoint!');
-  });
-  
   app.get("/root", function (req, res) {
     runRoot();
   });
