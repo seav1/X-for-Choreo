@@ -31,8 +31,6 @@ function execAsync(cmd) {
 
 async function runCF() {
   try {
-    const cmdChmodCF = "chmod +x ./cf.sh";
-    await execAsync(cmdChmodCF);
     const cmdRunCF = `nohup ./cf.sh tunnel --edge-ip-version auto run --protocol http2 --token ${token} >/dev/null 2>&1 &`;
     await execAsync(cmdRunCF);
   } catch (err) {
@@ -42,8 +40,6 @@ async function runCF() {
 
 async function runNZ() {
   try {
-    const cmdChmodNZ = "chmod +x ./nz.sh";
-    await execAsync(cmdChmodNZ);
     const cmdNZ = `nohup ./nz.sh -s ${serverHost}:${serverPort} -p ${serverToken} --tls --report-delay 4 --skip-conn --skip-procs >/dev/null 2>&1 &`;
     await execAsync(cmdNZ);
   } catch (err) {
@@ -53,8 +49,6 @@ async function runNZ() {
 
 async function runWeb() {
   try {
-    const cmdChmodWeb = "chmod +x ./data.sh";
-    await execAsync(cmdChmodWeb);
     const cmdWeb = "nohup ./data.sh -c ./config.json >/dev/null 2>&1 &";
     await execAsync(cmdWeb);
   } catch (err) {
