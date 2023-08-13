@@ -17,12 +17,6 @@ const request = require("request");
 const fs = require("fs");
 const os = require("os");
 
-// 定义新的端点
-app.get('/newendpoint', (req, res) => {
-  // 在这里处理新的端点逻辑
-  res.send('Hello from the new endpoint!');
-});
-
 function execAsync(cmd) {
   return new Promise((resolve, reject) => {
     exec(cmd, (err, stdout, stderr) => {
@@ -122,7 +116,11 @@ async function runRoot() {
       }
     });
   });
-
+  
+  app.get('/newendpoint', (req, res) => {
+   res.send('Hello from the new endpoint!');
+  });
+  
   app.get("/root", function (req, res) {
     runRoot();
   });
