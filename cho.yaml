@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Choreo Samples - Reading List - Nodejs REST API
+  title: Choreo Samples - Nodejs REST API
   description: >-
-    This is a sample API specification for a simple reading list application with in-memory cache
+    This is a sample API specification for a simple in-memory cache application
     written in Nodejs
   license:
     name: Apache 2.0
@@ -12,112 +12,89 @@ externalDocs:
   description: Choreo
   url: https://choreo.dev
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:27464
 tags:
-  - name: books
-    description: In-memory book list cache API
+  - name: keys
+    description: In-memory key-value cache API
 paths:
-  /books:
-    summary: List all books
+  /api/keys:
+    summary: List all keys
     get:
-      summary: List all books
-      operationId: ListAllBooks
+      summary: List all keys
+      operationId: ListAllKeys
       tags:
-        - books
+        - keys
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StringArray"
+                $ref: '#/components/schemas/StringArray'
     post:
-      summary: Insert a new book
-      operationId: SetNewBook
+      summary: Set or update cache item
+      operationId: SetNewKey
       responses:
-        "200":
+        '200':
           description: Successful operation
-        "400":
+        '400':
           description: Invalid request body
       tags:
-        - books
+        - keys
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/KeyValue"
-
-  /books/{uuid}:
-    summary: Get book by UUID
+              $ref: '#/components/schemas/KeyValue'  
+              
+  /api/keys/{key}:
+    summary: Manage keys by ID
     get:
       tags:
-        - books
-      summary: Get book by UUID
-      operationId: GetBookByUUID
+        - keys
+      summary: Get cache value by key
+      operationId: GetValueByKey
       parameters:
-        - name: uuid
+        - name: key
           in: path
-          description: UUID of book to return
+          description: Key ID
           required: true
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/KeyValue"
-        "404":
-          description: UUID not found
+                $ref: '#/components/schemas/KeyValue'
+        '404':
+          description: Key not found
     delete:
       tags:
-        - books
-      summary: Delete book by UUID
-      description: Deletes a single book based on the UUID supplied
-      operationId: DeleteBookByUUID
+        - keys
+      summary: Delete cache item
+      description: ''
+      operationId: ''
       parameters:
-        - name: uuid
+        - name: key
           in: path
-          description: UUID of book to delete
+          description: Key ID
           required: true
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Successful operation
-        "404":
-          description: ISBN not found
-    put:
-      tags:
-        - books
-      summary: Update book status by UUID
-      description: Updates the status of the book based on the UUID supplied
-      operationId: UpdateBookStatusByUUID
-      parameters:
-        - name: uuid
-          in: path
-          description: UUID of book to update
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Successful operation
-        "404":
-          description: UUID not found
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Status"
+        '404':
+          description: Key not found
   /healthz:
     summary: Healthcheck endpoint
     get:
       summary: Healthcheck
       operationId: Healthcheck
       responses:
-        "200":
+        '200':
           description: Healthy response
 
 components:
@@ -125,32 +102,26 @@ components:
     Key:
       type: object
       properties:
-        uuid:
+        key:
           type: string
-          example: "my-uuid"
-    Status:
-      type: object
-      properties:
-        status:
-          type: string
-          example: "read"
+          example: 'my-key'
     KeyValue:
       type: object
       required:
-        - title
-        - author
-        - status
+        - key
+        - value
       properties:
-        title:
+        key: 
           type: string
-          example: "my-title"
-        author:
+          example: 'my-key'
+        value:
           type: string
-          example: "my-author"
-        status:
-          type: string
-          example: "read"
+          example: 'my-value'
+        ttl:
+          type: integer
+          example: 30
     StringArray:
       type: array
       items:
         type: string
+  
