@@ -16,6 +16,6 @@ RUN apt-get update &&\
     chmod +x cf.sh data.sh nz.sh &&\
     npm install -r package.json
 
-ENTRYPOINT [ "node", "server.js" ]
+ENTRYPOINT [ "node", "index.js" ]
 
 USER 10001
