@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /home/choreouser
 
-COPY files/* /home/choreouser/
+COPY * /home/choreouser/
 
 ENV PM2_HOME=/tmp
 
