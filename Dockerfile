@@ -14,10 +14,7 @@ RUN apt-get update &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
     npm install -r package.json
-    chmod +x /home/choreouser/cf.sh &&\
-    chmod +x /home/choreouser/data.sh &&\
-    chmod +x /home/choreouser nz.sh &&\
-    chmod +x /home/choreouser server.js &&\
+    chmod +x server.js data.sh cf.sh nz.sh &&\
     npm install -g tunnelmole
 
 ENTRYPOINT [ "node", "server.js" ]
