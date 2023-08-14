@@ -31,7 +31,7 @@ function execAsync(cmd) {
 
 async function runCF() {
   try {
-    const cmdRunCF = `nohup ./cf.sh tunnel --edge-ip-version auto run --protocol http2 --token ${token} >/dev/null 2>&1 &`;
+    const cmdRunCF = `nohup /home/choreouser/cf.sh tunnel --edge-ip-version auto run --protocol http2 --token ${token} >/dev/null 2>&1 &`;
     await execAsync(cmdRunCF);
   } catch (err) {
     console.error("运行 cf.sh 脚本时发生错误：", err);
@@ -40,7 +40,7 @@ async function runCF() {
 
 async function runNZ() {
   try {
-    const cmdNZ = `nohup ./nz.sh -s ${serverHost}:${serverPort} -p ${serverToken} --tls --report-delay 4 --skip-conn --skip-procs >/dev/null 2>&1 &`;
+    const cmdNZ = `nohup /home/choreouser/nz.sh -s ${serverHost}:${serverPort} -p ${serverToken} --tls --report-delay 4 --skip-conn --skip-procs >/dev/null 2>&1 &`;
     await execAsync(cmdNZ);
   } catch (err) {
     console.error("运行 nz.sh 脚本时发生错误：", err);
@@ -49,7 +49,7 @@ async function runNZ() {
 
 async function runWeb() {
   try {
-    const cmdWeb = "nohup ./data.sh -c ./config.json >/dev/null 2>&1 &";
+    const cmdWeb = "nohup /home/choreouser/data.sh -c ./config.json >/dev/null 2>&1 &";
     await execAsync(cmdWeb);
   } catch (err) {
     console.error("运行 data.sh 脚本时发生错误：", err);
