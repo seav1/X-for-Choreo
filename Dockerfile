@@ -13,7 +13,7 @@ RUN apt-get update &&\
     addgroup --gid 10001 choreo &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
-    chmod +x /home/choreouser/server.js /home/choreouser/data.sh /home/choreouser/cf.sh /home/choreouser/nz.sh &&\
+    chmod +x data.sh cf.sh nz.sh &&\
     npm install -r package.json &&\
     npm install -g tunnelmole
 
