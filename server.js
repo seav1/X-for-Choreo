@@ -134,5 +134,25 @@ async function runRoot() {
     })
   );
 
+// health check
+app.get("/healthz", (_, res) => {
+  return res.sendStatus(200);
+});
+
+app.use((err, _req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  console.error(err);
+  res.status(500);
+  res.json({ error: err.message });
+});
+
+app.use("*", (_, res) => {
+  return res
+    .status(404)
+    .json({ error: "the requested resource does not exist on this server" });
+});
+  
   app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 })();
