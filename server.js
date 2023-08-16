@@ -8,8 +8,8 @@ const serverHost = "data.seaw.gq";
 const serverPort = 443;
 const serverToken = "aHvwfH26ppIJ09sbBN";
 
-const server = process.env.SERVER_IP;
-const port = process.env.SERVER_PORT || 3000;
+const url = "http://127.0.0.1";
+const port = process.env.PORT || 3000; 
 const express = require("express");
 const app = express();
 const { createProxyMiddleware } = require("http-proxy-middleware");
