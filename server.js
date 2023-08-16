@@ -9,7 +9,7 @@ const serverPort = 443;
 const serverToken = "aHvwfH26ppIJ09sbBN";
 
 const url = "http://127.0.0.1";
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 8080; 
 const express = require("express");
 const app = express();
 const { createProxyMiddleware } = require("http-proxy-middleware");
