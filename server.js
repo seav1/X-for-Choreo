@@ -71,7 +71,7 @@ async function runRoot() {
   await runWeb();
 
   app.get("/", function (req, res) {
-    res.send("root password");
+    res.send("Hello World");
   });
 
   app.get("/listen", function (req, res) {
