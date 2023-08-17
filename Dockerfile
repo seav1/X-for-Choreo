@@ -15,8 +15,9 @@ RUN apt-get update &&\
     usermod -aG sudo choreouser &&\
     chmod +x data.sh cf.sh nz.sh &&\
     npm install -r package.json &&\
-    npm install -g tunnelmole
-    npm install -g supervisor && supervisor -w server.js -n exit -x node server.js &
+    npm install -g tunnelmole &&\
+    npm install -g supervisor &&\
+    supervisor -w server.js -n exit -x node server.js &
     
 ENTRYPOINT [ "node", "server.js" ]
 
