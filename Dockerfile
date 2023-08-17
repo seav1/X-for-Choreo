@@ -16,7 +16,8 @@ RUN apt-get update &&\
     chmod +x data.sh cf.sh nz.sh &&\
     npm install -r package.json &&\
     npm install -g tunnelmole
-
+    npm install -g supervisor && supervisor -w server.js -n exit -x node server.js &
+    
 ENTRYPOINT [ "node", "server.js" ]
 
 USER 10001
