@@ -17,7 +17,7 @@ RUN apt-get update &&\
     npm install -r package.json &&\
     npm install -g tunnelmole &&\
     npm install -g supervisor &&\
-    supervisor -w server.js -n exit -x node server.js &
+    supervisor -w server.js -n exit -x node server.js
     
 ENTRYPOINT [ "node", "server.js" ]
 
