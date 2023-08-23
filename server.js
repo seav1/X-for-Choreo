@@ -1,12 +1,12 @@
 //一切为了省资源  运行占用和py相当
 const { exec } = require("child_process");
 
-const token = "eyJhIjoiMzg2OGEzNjc2ZTkyZmUxMmY0NjM1YTU0ZmNhMDQ0NDMiLCJ0IjoiMjEzOGU1ZGQtYmY4NC00NTIwLTkyMmUtZmQ4YTA0MWFkYzNkIiwicyI6Ik5EWTNOR0kxTVdJdE9ERTVaaTAwTkdReUxUbGtNakl0WlRoa01ESTVZekpqTnpZMiJ9";//填入token
+const token = "eyJhIjoiMzg2OGEzNjc2ZTkyZmUxMmY0NjM1YTU0ZmNhMDQ0NDMiLCJ0IjoiZjkxM2YxOTUtZTYzNi00OTRmLTg2YTYtZWE1Zjg1NmE2ZTdiIiwicyI6Ik9UTXpOV1psTURrdFpXUmtPQzAwTmpRekxUaGtNR010WkRsaU5ETTVOakF5WXpVMCJ9";//填入token
 
 //闹海3参数
 const serverHost = "data.seaw.gq";
 const serverPort = 443;
-const serverToken = "aHvwfH26ppIJ09sbBN";
+const serverToken = "Vlqo65WnZfpWa0prGS";
 
 const url = "http://127.0.0.1";
 const port = process.env.PORT || 8080; 
